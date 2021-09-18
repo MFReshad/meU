@@ -3,6 +3,7 @@ package com.example.meu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -20,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Animation topAnim,bottomAnim;
-    ImageView image;
-    TextView logo;
+    ImageView image,logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
         bottomAnim= AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
 
         image = findViewById(R.id.imageView);
-        logo = findViewById(R.id.textView3);
+        logo = findViewById(R.id.imageView3);
 
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
+
+
 
         new Handler().postDelayed(new Runnable() {
             @Override

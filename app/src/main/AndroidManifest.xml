@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.meu">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:appComponentFactory="whateverString"
@@ -13,7 +15,7 @@
         android:theme="@style/Theme.MeU"
         tools:replace="android:appComponentFactory">
         <activity android:name=".MainActivity2" />
-        <activity android:name=".NatigationBar" />
+        <activity android:name=".NavigationBar" />
         <activity
             android:name=".LogIn" />
         <activity

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -11,14 +12,14 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
-public class NatigationBar extends AppCompatActivity {
+public class NavigationBar extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_natigation_bar);
+        setContentView(R.layout.activity_navigation_bar);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
@@ -28,14 +29,19 @@ public class NatigationBar extends AppCompatActivity {
         bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.ic_profile));
         bottomNavigation.add(new MeowBottomNavigation.Model(5,R.drawable.ic_settings));
 
-        bottomNavigation.show(1,true);
+        //bottomNavigation.show(5,true);
         bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {
                 switch (model.getId()){
                     case 1:
+                        System.out.println("Star AI chat");
                         replace(new AIchat());
+                        //Intent myIntent = new Intent(NavigationBar.this, AIchat.class);
+                       // NavigationBar.this.startActivity(myIntent);
+                        System.out.println("Finish");
                         break;
+
                     case 2:
                         replace(new Goal());
                         break;

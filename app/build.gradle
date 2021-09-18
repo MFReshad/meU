@@ -6,6 +6,11 @@ android {
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
 
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
     defaultConfig {
         applicationId "com.example.meu"
         minSdkVersion 22
@@ -53,6 +58,12 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
     compile 'com.tomer:fadingtextview:2.5'
     compile 'com.github.markushi:circlebutton:1.1'
+
+    //dialogFlow
+    implementation 'com.google.cloud:google-cloud-dialogflow:2.1.0'
+    implementation 'io.grpc:grpc-okhttp:1.30.0'
+    //implementation 'com.google.cloud:google-cloud-dialogflow:0.67.0-alpha'
+    //implementation 'io.grpc:grpc-okhttp:1.15.1'
 
 }
 
