@@ -3,6 +3,7 @@ package com.example.meu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,17 +39,34 @@ public class MainActivity extends AppCompatActivity {
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
 
-
+        loadData();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
-                startActivity(intent);
-                finish();
+                if(LogIn.isLogin==0)
+                {
+                    Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    Intent myIntent = new Intent(MainActivity.this, NavigationBar.class);
+                    MainActivity.this.startActivity(myIntent);
+                    finish();
+                }
+
             }
         },SPLASH_SCREEN);
 
+
+    }
+
+    public void loadData(){
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("saveUser",MODE_PRIVATE);
+        LogIn.TEXT_NAME = sharedPreferences.getString("name","");
+        LogIn.isLogin = sharedPreferences.getInt("value",MODE_PRIVATE);
 
     }
 }

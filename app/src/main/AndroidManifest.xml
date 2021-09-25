@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeU"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ScheduleOrGoal"></activity>
+        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".ProfileSetting" />
+        <activity android:name=".ScheduleOrGoal" />
         <activity android:name=".ToDoList" />
         <activity android:name=".ChatWithCons" />
         <activity android:name=".ChatWithAI" />

@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.provider.Telephony.Mms.Part.TEXT;
+
 public class LogIn extends AppCompatActivity {
 
     Animation top,tp,fade;
@@ -25,14 +27,17 @@ public class LogIn extends AppCompatActivity {
     EditText username;
     ImageView iiv;
 
-    public static final String SHARED_PREFS = "sharedPref";
-    public static final String TEXT = "text";
+    public static String TEXT_NAME = "";
+    public static int isLogin=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+
+        loadData();
+
 
         iiv = findViewById(R.id.iV2);
         username = findViewById(R.id.Name);
@@ -69,8 +74,9 @@ public class LogIn extends AppCompatActivity {
                 String name = username.getText().toString();
                 //String pass = password.getText().toString();
 
-                if(name.length()>1)
+                if(name.length()>1 )
                 {
+                    isLogin=1;
                     //Toast.makeText(LogIn.this, "Login Successful.", Toast.LENGTH_SHORT).show();
                     Intent myIntent = new Intent(LogIn.this, NavigationBar.class);
                     LogIn.this.startActivity(myIntent);
@@ -79,17 +85,36 @@ public class LogIn extends AppCompatActivity {
                     Toast.makeText(LogIn.this, "Short name.", Toast.LENGTH_SHORT).show();
             }
         });
+
+        tw3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LogIn.this, "Terms & Service.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     public void saveData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("saveUser", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString(TEXT,username.getText().toString());
+        TEXT_NAME = username.getText().toString();
+        editor.putString("name",TEXT_NAME);
+        editor.putInt("value",isLogin);
+        editor.apply();
     }
 
     public void loadData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("saveUser",MODE_PRIVATE);
+        TEXT_NAME = sharedPreferences.getString("name","");
+        isLogin = sharedPreferences.getInt("value",MODE_PRIVATE);
         
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        saveData();
     }
 }

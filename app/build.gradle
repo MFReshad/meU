@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
 }
-
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
@@ -58,6 +58,9 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
     compile 'com.tomer:fadingtextview:2.5'
     compile 'com.github.markushi:circlebutton:1.1'
+
+    implementation platform('com.google.firebase:firebase-bom:28.4.1')
+    implementation 'com.google.firebase:firebase-analytics'
 
     //dialogFlow
     implementation 'com.google.cloud:google-cloud-dialogflow:2.1.0'
