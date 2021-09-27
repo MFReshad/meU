@@ -1,10 +1,12 @@
 package com.example.meu;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -19,6 +21,8 @@ import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -144,11 +148,8 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
                 startActivity(myIntent);
                 break;
             case R.id.logout:
-                finish();
-                LogIn.isLogin = 0;
-                saveData();
-                Intent myIntent1 = new Intent(NavigationBar.this, LogIn.class);
-                startActivity(myIntent1);
+                alert();
+
                 break;
             case R.id.about:
                 Intent myIntent2 = new Intent(NavigationBar.this, AboutUs.class);
@@ -177,5 +178,31 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
         editor.putString("name",TEXT_NAME);
         editor.putInt("value",isLogin);
         editor.apply();
+    }
+
+    public void alert()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirmation message!");
+        builder.setMessage("Do you want to logout? If you don't link your account to cloud you will lost your data.");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                FirebaseAuth.getInstance().signOut();
+                LogIn.isLogin = 0;
+                saveData();
+                Intent myIntent1 = new Intent(NavigationBar.this, LogIn.class);
+                startActivity(myIntent1);
+                dialog.dismiss();
+                // stop chronometer here
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
