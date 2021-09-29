@@ -13,14 +13,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 
 import static com.example.meu.LogIn.TEXT_NAME;
 import static com.example.meu.LogIn.isLogin;
@@ -32,6 +37,7 @@ public class LinkID extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentUser;
+    private DatabaseReference mRootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,7 @@ public class LinkID extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
+        mRootRef = FirebaseDatabase.getInstance().getReference("User");
 
         email1 = findViewById(R.id.mail);
         pass1 = findViewById(R.id.pass);
@@ -55,14 +62,18 @@ public class LinkID extends AppCompatActivity {
                     String email = email1.getText().toString();
                     String password = pass1.getText().toString();
 
+                    saveDB();
+
                     AuthCredential credential = EmailAuthProvider.getCredential(email, password);
                     mCurrentUser.linkWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(LinkID.this, "Account saved", Toast.LENGTH_SHORT).show();
+
+
+                                Toast.makeText(LinkID.this, "Account has connected with cloud.", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(LinkID.this, "Error.Check your internet connection."+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(LinkID.this, ""+task.getException(), Toast.LENGTH_LONG).show();
                             }
                         }
                     });
@@ -105,7 +116,7 @@ public class LinkID extends AppCompatActivity {
 
         if(p1.length()<6)
         {
-            pass1.setError("Enter at least 4 characters");
+            pass1.setError("Enter at least 6 characters");
             pass1.requestFocus();
             return;
         }
@@ -118,7 +129,7 @@ public class LinkID extends AppCompatActivity {
         }
 
     }
-
+/*
     public void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences("saveUser", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -126,5 +137,34 @@ public class LinkID extends AppCompatActivity {
         editor.putString("name",TEXT_NAME);
         editor.putInt("value",isLogin);
         editor.apply();
+    }
+
+
+
+    public void updateDB()
+    {
+        HashMap<String,Object> map = new HashMap<>();
+        // map.put("name", TEXT_NAME);
+        map.put("email", "email");
+        map.put("id",mAuth.getCurrentUser().getUid());
+        FirebaseDatabase.getInstance().getReference().child("user").child(mAuth.getCurrentUser().getUid()).updateChildren(map);
+        //mRootRef.child("User").child(mAuth.getCurrentUser().getUid()).setValue(map);
+
+        String emaill = email1.getText().toString();
+        String passwordd = pass1.getText().toString();
+    }
+
+    */
+
+
+    public void saveDB()
+    {
+        String uname = TEXT_NAME;
+        String mail = email1.getText().toString();
+        String uid = mAuth.getCurrentUser().getUid();
+
+        User user = new User(uname,mail,uid);
+
+        mRootRef.child(uid).setValue(user);
     }
 }

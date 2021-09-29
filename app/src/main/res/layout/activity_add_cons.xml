@@ -7,6 +7,7 @@
     tools:context=".ProfileSetting">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/menu_background"
@@ -25,6 +26,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Consultant"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -83,7 +95,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".9" />
 
-    <EditText
+    <!--EditText
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/mail"
         android:layout_width="0dp"
@@ -96,9 +108,9 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline1" /-->
 
-    <EditText
+    <!--EditText
         android:id="@+id/pass"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
@@ -112,37 +124,69 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" /-->
 
-    <EditText
-        android:id="@+id/pass2"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_text_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="65dp"
+        app:errorEnabled="true"
         android:backgroundTint="#009688"
-        android:hint="confirm pass"
-        android:textSize="20dp"
-        android:password="true"
-        android:singleLine="true"
-        android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_edit_text"
+            android:layout_width="285dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#009688"
+            android:hint="consultant mail id"
+            android:singleLine="true"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pass_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        app:errorEnabled="true"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/guideline" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pass_edit_text"
+            android:layout_width="285dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#009688"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/link"
+        android:id="@+id/loadbtn"
         style="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
         android:layout_width="150dp"
         android:layout_height="65dp"
         android:backgroundTint="#009688"
-        android:text="Update"
-        android:textSize="20dp"
+        android:text="add"
         android:textAlignment="center"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 
 

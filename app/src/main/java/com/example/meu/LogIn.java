@@ -48,7 +48,12 @@ public class LogIn extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        loadData();
+        //loadData();
+
+        String first = "Hey! I'm ";
+        String next = "<b><font color='#2196F3'>meU </font></b>";
+        String if1 = "if you are a consultant ";
+        String click = "<b><u><font color='#2196F3'>click here </font></u></b>";
 
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
@@ -60,6 +65,8 @@ public class LogIn extends AppCompatActivity {
         TextView tw1 = findViewById(R.id.tw1);
         TextView tw2 = findViewById(R.id.tw2);
         TextView tw3 = findViewById(R.id.tw3);
+        TextView tw4 = findViewById(R.id.tw4);
+
 
 
         // tw1.setText(s+s1);
@@ -67,14 +74,15 @@ public class LogIn extends AppCompatActivity {
         fade = AnimationUtils.loadAnimation(this, R.anim.fade_in_little);
         tw2.setAnimation(tp);
         tw3.setAnimation(tp);
+        tw4.setAnimation(tp);
         iiv.setAnimation(tp);
         tw1.setAnimation(fade);
         username.setAnimation(fade);
 
 
-        String first = "Hey! I'm ";
-        String next = "<b><font color='#2196F3'>meU </font></b>";
+
         tw.setText(Html.fromHtml(first + next));
+        tw4.setText(Html.fromHtml(if1+click));
 
         top = AnimationUtils.loadAnimation(this, R.anim.top_up);
         tw.setAnimation(top);
@@ -97,13 +105,12 @@ public class LogIn extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            isLogin = 1;
+                                            //isLogin = 1;
+                                            saveData();
                                             //Toast.makeText(LogIn.this, "Login Successful.", Toast.LENGTH_SHORT).show();
                                             Intent myIntent = new Intent(LogIn.this, NavigationBar.class);
                                             LogIn.this.startActivity(myIntent);
                                             // Sign in success, update UI with the signed-in user's information
-
-                                        } else {
 
                                         }
                                     }
@@ -123,32 +130,44 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+        tw4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LogIn.this.startActivity(new Intent(LogIn.this, ConsultantReqOrLogin.class));
+            }
+        });
+
 
     }
+
 
     public void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences("saveUser", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         TEXT_NAME = username.getText().toString();
         editor.putString("name", TEXT_NAME);
-        editor.putInt("value", isLogin);
+       // editor.putInt("value", isLogin);
         editor.apply();
     }
+    /*
+        public void loadData() {
+            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("saveUser", MODE_PRIVATE);
+            TEXT_NAME = sharedPreferences.getString("name", "");
+            isLogin = sharedPreferences.getInt("value", MODE_PRIVATE);
 
-    public void loadData() {
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("saveUser", MODE_PRIVATE);
-        TEXT_NAME = sharedPreferences.getString("name", "");
-        isLogin = sharedPreferences.getInt("value", MODE_PRIVATE);
+        }
 
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
 
-        saveData();
-    }
+        @Override
+        protected void onPause() {
+            super.onPause();
 
+            saveData();
+        }
+
+
+         */
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
