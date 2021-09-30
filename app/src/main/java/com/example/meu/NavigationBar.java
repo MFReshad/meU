@@ -1,36 +1,28 @@
 package com.example.meu;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.navigation.NavigationView;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.google.firebase.auth.FirebaseAuth;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import pl.droidsonroids.gif.GifImageView;
-
-import static com.example.meu.LogIn.TEXT_NAME;
-import static com.example.meu.LogIn.isLogin;
 
 public class NavigationBar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -144,11 +136,8 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
                 startActivity(myIntent);
                 break;
             case R.id.logout:
-                finish();
-                LogIn.isLogin = 0;
-                saveData();
-                Intent myIntent1 = new Intent(NavigationBar.this, LogIn.class);
-                startActivity(myIntent1);
+                alert();
+
                 break;
             case R.id.about:
                 Intent myIntent2 = new Intent(NavigationBar.this, AboutUs.class);
@@ -169,7 +158,7 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
         }
         return false;
     }
-
+/*
     public void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences("saveUser", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -177,5 +166,33 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
         editor.putString("name",TEXT_NAME);
         editor.putInt("value",isLogin);
         editor.apply();
+    }
+
+
+ */
+    public void alert()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirmation message!");
+        builder.setMessage("Do you want to logout? If you don't link your account to cloud you will lost your data.");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                FirebaseAuth.getInstance().signOut();
+               // LogIn.isLogin = 0;
+               // saveData();
+                Intent myIntent1 = new Intent(NavigationBar.this, MainActivity2.class);
+                startActivity(myIntent1);
+                dialog.dismiss();
+                // stop chronometer here
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

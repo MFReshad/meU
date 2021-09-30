@@ -4,6 +4,8 @@
     package="com.example.meu">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,11 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeU"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".AddCons"></activity>
+        <activity android:name=".Consultant" />
+        <activity android:name=".ConsultantReqOrLogin" />
+        <activity android:name=".ChatWithCons" />
+        <activity android:name=".ConsConfirm" />
+        <activity android:name=".LoginConsultant" />
+        <activity android:name=".LoadData" />
+        <activity android:name=".LinkID" />
+        <activity android:name=".AboutUs" />
         <activity android:name=".ProfileSetting" />
         <activity android:name=".ScheduleOrGoal" />
         <activity android:name=".ToDoList" />
-        <activity android:name=".ChatWithCons" />
         <activity android:name=".ChatWithAI" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".NavigationBar" />

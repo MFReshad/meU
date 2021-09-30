@@ -7,6 +7,7 @@
     tools:context=".ProfileSetting">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/menu_background"
@@ -25,6 +26,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Consultant"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -66,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".8" />
+        app:layout_constraintGuide_percent=".9" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -83,65 +95,98 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".9" />
 
-    <Button
-        android:id="@+id/linkbutton"
-        style="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
-        android:layout_width="272dp"
+    <!--EditText
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/mail"
+        android:layout_width="0dp"
         android:layout_height="65dp"
         android:backgroundTint="#009688"
-        android:text="Link my profile"
+        android:hint="email id"
         android:textSize="20dp"
-        android:textAlignment="viewStart"
-        app:icon="@drawable/ic_baseline_backup"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline1" /-->
 
-    <Button
-        android:id="@+id/loadbutton"
-        style="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
-        android:layout_width="272dp"
+    <!--EditText
+        android:id="@+id/pass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="65dp"
-        android:backgroundTint="#2196F3"
-        android:textAlignment="viewStart"
-        android:text="Load my data"
+        android:backgroundTint="#009688"
+        android:hint="password"
         android:textSize="20dp"
-        app:icon="@drawable/ic_baseline_cloud_download"
+        android:paddingLeft="10dp"
+        android:password="true"
+        android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" /-->
 
-    <Button
-        android:id="@+id/changepassbtn"
-        style="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
-        android:layout_width="272dp"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="65dp"
-        android:backgroundTint="#3F51B5"
-        android:text="Change password"
-        android:textSize="20dp"
-        android:textAlignment="viewStart"
-        app:icon="@drawable/ic_baseline_lock"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:errorEnabled="true"
+        android:backgroundTint="#009688"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_edit_text"
+            android:layout_width="285dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#009688"
+            android:hint="consultant mail id"
+            android:singleLine="true"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pass_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        app:errorEnabled="true"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/guideline" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pass_edit_text"
+            android:layout_width="285dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#009688"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/deletebutton"
+        android:id="@+id/loadbtn"
         style="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
-        android:layout_width="272dp"
+        android:layout_width="150dp"
         android:layout_height="65dp"
-        android:backgroundTint="#DADD1A1A"
-        android:text="Delete my account"
+        android:backgroundTint="#009688"
+        android:text="add"
+        android:textAlignment="center"
         android:textSize="20dp"
-        android:textAlignment="viewStart"
-        app:icon="@drawable/ic_baseline_delete"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 
 

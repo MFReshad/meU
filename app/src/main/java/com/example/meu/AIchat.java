@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class AIchat extends Fragment implements View.OnClickListener {
@@ -47,8 +48,8 @@ public class AIchat extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.button1:
-                Intent myIntent2 = new Intent(getActivity(), ChatWithCons.class);
-                AIchat.this.startActivity(myIntent2);
+                Intent myIntent1 = new Intent(getActivity(), ConsConfirm.class);
+                AIchat.this.startActivity(myIntent1);
                 break;
 
         }

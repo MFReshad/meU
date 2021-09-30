@@ -48,7 +48,15 @@ public class MainActivity2 extends AppCompatActivity {
 
         fade= AnimationUtils.loadAnimation(this,R.anim.fade_in);
         TextView tw3 = findViewById(R.id.textView5);
-        tw3.setAnimation(fade);
+        tw3.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tw3.setVisibility(View.VISIBLE);
+                tw3.setAnimation(fade);
+            }
+        },1500);
+
+
 
         //RevealTextView tw3 = (RevealTextView)  findViewById(R.id.textView5);
 
@@ -75,7 +83,15 @@ public class MainActivity2 extends AppCompatActivity {
  */
         blinks = AnimationUtils.loadAnimation(this,R.anim.blink);
         Button bt = findViewById(R.id.btn);
-        bt.setAnimation(blinks);
+
+
+        bt.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                bt.setVisibility(View.VISIBLE);
+                bt.setAnimation(blinks);;
+            }
+        },3000);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override

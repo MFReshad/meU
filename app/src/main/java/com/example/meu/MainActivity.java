@@ -1,21 +1,27 @@
 package com.example.meu;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private  static  int SPLASH_SCREEN;
+
+    private FirebaseAuth mAuth;
+    private FirebaseUser mCurrentUser;
 
     static {
         SPLASH_SCREEN = 5000;
@@ -39,23 +45,36 @@ public class MainActivity extends AppCompatActivity {
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
 
-        loadData();
+        //loadData();
+
+        mAuth = FirebaseAuth.getInstance();
+        mCurrentUser = mAuth.getCurrentUser();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(LogIn.isLogin==0)
+                if(CheckNetwork.isInternetAvailable(MainActivity.this)) //returns true if internet available
                 {
-                    Intent intent = new Intent(MainActivity.this,MainActivity2.class);
-                    startActivity(intent);
-                    finish();
+                    if(mCurrentUser != null)
+                    {
+                        Intent myIntent = new Intent(MainActivity.this, NavigationBar.class);
+                        MainActivity.this.startActivity(myIntent);
+                        finish();
+                    }
+
+                    else
+                    {
+                        Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 else
                 {
-                    Intent myIntent = new Intent(MainActivity.this, NavigationBar.class);
-                    MainActivity.this.startActivity(myIntent);
-                    finish();
+                    Toast.makeText(MainActivity.this,"No Internet Connection",Toast.LENGTH_SHORT).show();
+                    alert();
                 }
+
 
             }
         },SPLASH_SCREEN);
@@ -63,10 +82,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void loadData(){
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("saveUser",MODE_PRIVATE);
-        LogIn.TEXT_NAME = sharedPreferences.getString("name","");
-        LogIn.isLogin = sharedPreferences.getInt("value",MODE_PRIVATE);
+    public void alert()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Connection error");
+        builder.setMessage("Unable to connect with the server. Check your internet connection and try again.");
+        builder.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                finish();
+                dialog.dismiss();
+                // stop chronometer here
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+
 
     }
 }
