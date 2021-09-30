@@ -3,8 +3,6 @@ package com.example.meu;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -12,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.meu.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -25,10 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-
 import static com.example.meu.LogIn.TEXT_NAME;
-import static com.example.meu.LogIn.isLogin;
 
 public class LinkID extends AppCompatActivity {
 
@@ -62,15 +57,14 @@ public class LinkID extends AppCompatActivity {
                     String email = email1.getText().toString();
                     String password = pass1.getText().toString();
 
-                    saveDB();
+
 
                     AuthCredential credential = EmailAuthProvider.getCredential(email, password);
                     mCurrentUser.linkWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-
-
+                                saveDB();
                                 Toast.makeText(LinkID.this, "Account has connected with cloud.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(LinkID.this, ""+task.getException(), Toast.LENGTH_LONG).show();
@@ -159,12 +153,12 @@ public class LinkID extends AppCompatActivity {
 
     public void saveDB()
     {
-        String uname = TEXT_NAME;
+       // String uname = "";
         String mail = email1.getText().toString();
         String uid = mAuth.getCurrentUser().getUid();
 
-        User user = new User(uname,mail,uid);
+       // User user = new User(uname,mail,uid);
 
-        mRootRef.child(uid).setValue(user);
+        mRootRef.child(uid).child("mail").setValue(mail);
     }
 }

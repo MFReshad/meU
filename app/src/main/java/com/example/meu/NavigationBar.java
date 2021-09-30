@@ -13,7 +13,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -31,6 +34,7 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
     GifImageView gif;
     NavigationView nav;
     int vis = 0;
+    ImageView im;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +44,23 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
         gif = findViewById(R.id.breath);
         tv = findViewById(R.id.tv1);
         nav = findViewById(R.id.nav_view);
+        im = findViewById(R.id.img);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         FrameLayout fm = findViewById(R.id.frame);
+
+        Animation fade= AnimationUtils.loadAnimation(this,R.anim.fade_out);
+        gif.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                gif.setAnimation(fade);
+                gif.setVisibility(View.INVISIBLE);
+                fm.setBackgroundColor(Color.WHITE);
+                //im.setBackgroundResource(R.drawable.pic1);
+                hide();
+                replace(new AIchat());
+            }
+        },5000);
 
         nav.setNavigationItemSelectedListener(this);
 
@@ -63,24 +81,29 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
                         hide();
                         fm.setBackgroundColor(Color.WHITE);
                         replace(new AIchat());
+                        im.setBackgroundResource(R.drawable.pic1);
                         //Intent myIntent = new Intent(NavigationBar.this, AIchat.class);
                         // NavigationBar.this.startActivity(myIntent);
                         //System.out.println("Finish");
+
                         break;
 
                     case 2:
                         replace(new Goal());
                         hide();
                         fm.setBackgroundColor(Color.WHITE);
+                        im.setBackgroundResource(R.drawable.pic2);
                         break;
                     case 3:
                         replace(new Feature());
                         hide();
                         fm.setBackgroundColor(Color.WHITE);
+                        im.setBackgroundResource(R.drawable.pic1);
                         break;
                     case 4:
-                        replace(new Profile());
+                        //replace(new Profile());
                         fm.setBackgroundColor(Color.WHITE);
+                        im.setBackgroundResource(R.drawable.pic2);
                         hide();
                         vis = 1;
                         nav.setVisibility(View.VISIBLE);
@@ -105,7 +128,7 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
     public void onBackPressed() {
         if (vis == 1) {
             nav.setVisibility(View.INVISIBLE);
-            replace(new AIchat());
+            MeowBottomNavigation.generateViewId();
             vis = 0;
 
         } else

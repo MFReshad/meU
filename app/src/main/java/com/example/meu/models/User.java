@@ -1,4 +1,4 @@
-package com.example.meu;
+package com.example.meu.models;
 
 public class User {
 

@@ -78,9 +78,8 @@ public class MainActivity2 extends AppCompatActivity {
                 finish();
             }
         });
-
-
  */
+
         blinks = AnimationUtils.loadAnimation(this,R.anim.blink);
         Button bt = findViewById(R.id.btn);
 

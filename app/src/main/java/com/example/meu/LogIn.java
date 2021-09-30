@@ -18,11 +18,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.meu.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.provider.Telephony.Mms.Part.TEXT;
 
@@ -37,6 +40,7 @@ public class LogIn extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentUser;
+    private DatabaseReference mRootRef;
 
 
     public static String TEXT_NAME = "";
@@ -57,6 +61,7 @@ public class LogIn extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
+        mRootRef = FirebaseDatabase.getInstance().getReference("User");
 
 
         iiv = findViewById(R.id.iV2);
@@ -107,6 +112,7 @@ public class LogIn extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             //isLogin = 1;
                                             saveData();
+                                            saveDB();;
                                             //Toast.makeText(LogIn.this, "Login Successful.", Toast.LENGTH_SHORT).show();
                                             Intent myIntent = new Intent(LogIn.this, NavigationBar.class);
                                             LogIn.this.startActivity(myIntent);
@@ -172,6 +178,19 @@ public class LogIn extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
 
+
+    }
+
+    public void saveDB()
+    {
+        String uname = username.getText().toString();
+        String mail = "";
+        String uid = mAuth.getCurrentUser().getUid();
+
+        User user = new User(uname,mail,uid);
+
+        mRootRef.child(uid).child("name").setValue(uname);
+        mRootRef.child(uid).child("id").setValue(uid);
 
     }
 }

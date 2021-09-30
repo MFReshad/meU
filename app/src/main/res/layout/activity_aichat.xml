@@ -41,25 +41,31 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
 
-    <Button
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/button"
-        android:layout_width="242dp"
-        android:layout_height="135dp"
+        style="@style/TextAppearance.AppCompat.Button"
+        android:src="@drawable/chatai"
+        android:layout_width="329dp"
+        android:layout_height="186dp"
         android:text="Chat with Ai"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        android:visibility="invisible"/>
 
-    <Button
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/button1"
-        android:layout_width="242dp"
-        android:layout_height="135dp"
+        android:layout_width="329dp"
+        android:layout_height="186dp"
+        android:src="@drawable/chatconsult"
         android:text="Chat with Consultant"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline1"
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

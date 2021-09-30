@@ -17,7 +17,7 @@
         android:theme="@style/Theme.MeU"
         tools:replace="android:appComponentFactory">
         <activity android:name=".AddCons"></activity>
-        <activity android:name=".Consultant" />
+        <activity android:name=".models.Consultant" />
         <activity android:name=".ConsultantReqOrLogin" />
         <activity android:name=".ChatWithCons" />
         <activity android:name=".ConsConfirm" />

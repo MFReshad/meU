@@ -8,14 +8,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
+
+import pl.droidsonroids.gif.GifImageView;
 
 
 public class AIchat extends Fragment implements View.OnClickListener {
 
-    Button b1,b2;
 
+    GifImageView b2,b1;
+
+    Animation leftright,rightleft;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,12 @@ public class AIchat extends Fragment implements View.OnClickListener {
         b2 = view.findViewById(R.id.button1);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
+        leftright= AnimationUtils.loadAnimation(getActivity(),R.anim.left_right);
+        rightleft= AnimationUtils.loadAnimation(getActivity(),R.anim.right_left);
+        b1.setAnimation(leftright);
+        b2.setAnimation(leftright);
+        b1.setVisibility(View.VISIBLE);
+        b2.setVisibility(View.VISIBLE);
 
         return view;
 

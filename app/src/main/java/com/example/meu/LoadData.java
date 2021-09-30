@@ -37,6 +37,7 @@ public class LoadData extends AppCompatActivity {
             public void onClick(View v) {
                 String name = mail.getText().toString();
                 String mpass = pass.getText().toString();
+                mAuth.signOut();
                 loginUser(name, mpass);
 
             }
@@ -50,7 +51,7 @@ public class LoadData extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
 
-                Toast.makeText(LoadData.this, "Login Successful.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoadData.this, "Welcome Back.", Toast.LENGTH_SHORT).show();
             }
         });
     }
