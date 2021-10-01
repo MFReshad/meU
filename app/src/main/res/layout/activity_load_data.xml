@@ -94,36 +94,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".9" />
 
-    <!--EditText
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/mail"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:backgroundTint="#009688"
-        android:hint="email id"
-        android:textSize="20dp"
-        android:paddingLeft="10dp"
-        android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" /-->
 
-    <!--EditText
-        android:id="@+id/pass"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:backgroundTint="#009688"
-        android:hint="password"
-        android:textSize="20dp"
-        android:paddingLeft="10dp"
-        android:password="true"
-        android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline" /-->
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -139,7 +110,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline1">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_edit_text"
+            android:id="@+id/mmail_edit_text"
             android:layout_width="285dp"
             android:layout_height="48dp"
             android:backgroundTint="#009688"

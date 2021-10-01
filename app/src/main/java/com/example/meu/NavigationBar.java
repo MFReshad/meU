@@ -204,7 +204,8 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
                // LogIn.isLogin = 0;
                // saveData();
                 Intent myIntent1 = new Intent(NavigationBar.this, MainActivity2.class);
-                startActivity(myIntent1);
+                NavigationBar.this.startActivity(myIntent1);
+                finish();
                 dialog.dismiss();
                 // stop chronometer here
 

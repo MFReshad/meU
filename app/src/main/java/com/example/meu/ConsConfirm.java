@@ -13,12 +13,19 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.meu.LogIn.TEXT_NAME;
 
 public class ConsConfirm extends AppCompatActivity {
 
     Button btn;
+
+    private FirebaseAuth mAuth;
+    private FirebaseUser mCurrentUser;
+    private DatabaseReference mRootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,10 @@ public class ConsConfirm extends AppCompatActivity {
        // final TypeWriter tw1 = (TypeWriter) findViewById(R.id.tw1);
 
         btn = findViewById(R.id.confirm_button);
+
+        mAuth = FirebaseAuth.getInstance();
+        mCurrentUser = mAuth.getCurrentUser();
+        mRootRef = FirebaseDatabase.getInstance().getReference("User");
 
 
         String last = " ";
@@ -59,8 +70,11 @@ public class ConsConfirm extends AppCompatActivity {
                 Toast.makeText(ConsConfirm.this, "Payment Successful.", Toast.LENGTH_SHORT).show();
                 // LogIn.isLogin = 0;
                 // saveData();
+                String uid = mAuth.getCurrentUser().getUid();
+                mRootRef.child(uid).child("Payment").setValue("Paid");
                 Intent myIntent1 = new Intent(ConsConfirm.this, ChatWithCons.class);
-                startActivity(myIntent1);
+                ConsConfirm.this.startActivity(myIntent1);
+                finish();
                 dialog.dismiss();
                 // stop chronometer here
 

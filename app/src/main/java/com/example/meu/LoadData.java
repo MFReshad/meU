@@ -26,8 +26,8 @@ public class LoadData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_data);
 
-        mail = findViewById((R.id.mail));
-        pass = findViewById((R.id.pass));
+        mail = findViewById((R.id.mmail_edit_text));
+        pass = findViewById((R.id.pass_edit_text));
         btn =  findViewById((R.id.loadbtn));
 
         mAuth = FirebaseAuth.getInstance();

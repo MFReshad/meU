@@ -139,7 +139,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline1">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_edit_text"
+            android:id="@+id/email_edit_text"
             android:layout_width="285dp"
             android:layout_height="48dp"
             android:backgroundTint="#009688"

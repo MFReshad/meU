@@ -6,17 +6,17 @@ public class Consultant {
 
     private String name;
     private String mail;
-    private String pass;
+    private String id;
     private String gender;
 
     public Consultant() {
 
     }
 
-    public Consultant(String name, String mail, String pass, String gender) {
+    public Consultant(String name, String mail, String id, String gender) {
         this.name = name;
         this.mail = mail;
-        this.pass = pass;
+        this.id = id;
         this.gender = gender;
     }
 
@@ -36,12 +36,12 @@ public class Consultant {
         this.mail = mail;
     }
 
-    public String getPass() {
-        return pass;
+    public String getId() {
+        return id;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setId(String pass) {
+        this.id = id;
     }
 
     public String getGender() {
