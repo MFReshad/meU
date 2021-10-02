@@ -103,7 +103,7 @@ public class AIchat extends Fragment implements View.OnClickListener {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if(snapshot.child("User").child(uId).child("Payment").exists())
                 {
-                    Intent myIntent1 = new Intent(getActivity(), ChatWithCons.class);
+                    Intent myIntent1 = new Intent(getActivity(), MainActivity3.class);
                     startActivity(myIntent1);
                 }
                 else

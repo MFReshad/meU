@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent myIntent = new Intent(MainActivity.this, ConsultantChatView.class);
+                    Intent myIntent = new Intent(MainActivity.this, MainActivity3.class);
                     MainActivity.this.startActivity(myIntent);
                     finish();
                 }

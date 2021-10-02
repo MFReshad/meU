@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeU"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ConsultantChatView"></activity>
+        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".MainActivity3" />
+        <activity android:name=".ConsultantChatView" />
         <activity android:name=".AddCons" />
         <activity android:name=".models.Consultant" />
         <activity android:name=".ConsultantReqOrLogin" />

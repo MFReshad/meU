@@ -55,7 +55,7 @@ public class LoginConsultant extends AppCompatActivity {
             public void onSuccess(AuthResult authResult) {
 
                 Toast.makeText(LoginConsultant.this, "Login Successful.", Toast.LENGTH_SHORT).show();
-                Intent myIntent = new Intent(LoginConsultant.this, ConsultantChatView.class);
+                Intent myIntent = new Intent(LoginConsultant.this, MainActivity3.class);
                 LoginConsultant.this.startActivity(myIntent);
                 finish();
             }

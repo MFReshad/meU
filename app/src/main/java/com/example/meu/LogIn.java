@@ -188,10 +188,10 @@ public class LogIn extends AppCompatActivity {
         String mail = "";
         String uid = mAuth.getCurrentUser().getUid();
 
-        User user = new User(uname,mail,uid);
-
         mRootRef.child(uid).child("name").setValue(uname);
         mRootRef.child(uid).child("id").setValue(uid);
+        mRootRef.child(uid).child("mail").setValue("");
+        mRootRef.child(uid).child("imageURL").setValue("noImg");
 
     }
 }

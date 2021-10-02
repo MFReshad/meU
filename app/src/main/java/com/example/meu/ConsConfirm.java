@@ -72,7 +72,7 @@ public class ConsConfirm extends AppCompatActivity {
                 // saveData();
                 String uid = mAuth.getCurrentUser().getUid();
                 mRootRef.child(uid).child("Payment").setValue("Paid");
-                Intent myIntent1 = new Intent(ConsConfirm.this, ChatWithCons.class);
+                Intent myIntent1 = new Intent(ConsConfirm.this, MainActivity3.class);
                 ConsConfirm.this.startActivity(myIntent1);
                 finish();
                 dialog.dismiss();
