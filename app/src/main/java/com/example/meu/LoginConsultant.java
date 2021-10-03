@@ -55,14 +55,14 @@ public class LoginConsultant extends AppCompatActivity {
             public void onSuccess(AuthResult authResult) {
 
                 Toast.makeText(LoginConsultant.this, "Login Successful.", Toast.LENGTH_SHORT).show();
-                Intent myIntent = new Intent(LoginConsultant.this, MainActivity3.class);
+                Intent myIntent = new Intent(LoginConsultant.this, ConsultantChatView.class);
                 LoginConsultant.this.startActivity(myIntent);
                 finish();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                Log.d("fail ", ""+e);
+                Toast.makeText(LoginConsultant.this, ""+e, Toast.LENGTH_SHORT).show();
             }
         });
     }

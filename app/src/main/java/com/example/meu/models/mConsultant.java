@@ -13,7 +13,7 @@ public class mConsultant {
 
     }
 
-    public mConsultant(String id,String imageUrl, String name, String mail, String status, String search) {
+    public mConsultant(String id,String imageUrl, String name, String mail, String status) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.name = name;

@@ -11,15 +11,14 @@
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="#5BAAD5">
+        android:layout_weight="1">
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/breath"
             android:layout_width="wrap_content"
             android:layout_height="426dp"
             android:layout_gravity="center"
-            android:src="@drawable/breath"
+            android:src="@drawable/breath_recovered"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2"

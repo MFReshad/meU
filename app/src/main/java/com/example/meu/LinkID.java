@@ -66,6 +66,10 @@ public class LinkID extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 saveDB();
                                 Toast.makeText(LinkID.this, "Account has connected with cloud.", Toast.LENGTH_SHORT).show();
+                                email1.setText("");
+                                pass1.setText("");
+                                pass2.setText("");
+
                             } else {
                                 Toast.makeText(LinkID.this, ""+task.getException(), Toast.LENGTH_LONG).show();
                             }

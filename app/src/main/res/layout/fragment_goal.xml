@@ -5,25 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Goal">
-    <Button
+
+    <ImageView
         android:id="@+id/button"
-        android:layout_width="242dp"
-        android:layout_height="135dp"
-        android:text="To do list"
-        app:layout_constraintBottom_toTopOf="@+id/guideline1"
+        android:layout_width="0dp"
+        android:layout_height="406dp"
+        android:src="@drawable/keepnote"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="242dp"
-        android:layout_height="135dp"
-        android:text="Goal/Schedule"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

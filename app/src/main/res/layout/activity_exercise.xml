@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent"
+    tools:context=".Exercise">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView
+                android:id="@+id/txt"
+                android:text="30'sec Exercise"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex11" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex1" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex2" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex3" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex4" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex5" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex6" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex7" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex8" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex9" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex10" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex11" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex12" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/ex13" />
+        </TableRow>
+    </TableLayout>
+
+
+</ScrollView>

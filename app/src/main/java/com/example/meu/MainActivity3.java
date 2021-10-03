@@ -33,9 +33,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -47,6 +46,8 @@ public class MainActivity3 extends AppCompatActivity {
     DatabaseReference mRef;
 
     BottomNavigationView bn;
+    CircleImageView image_profile;
+
 
 
     @Override
@@ -57,6 +58,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         bn = findViewById(R.id.nv);
         username = findViewById(R.id.username);
+        image_profile = findViewById(R.id.profile_image);
 
 
 
@@ -76,6 +78,28 @@ public class MainActivity3 extends AppCompatActivity {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 username.setText(user.getName());
+                String im = user.getImageURL();
+                if (im.equals("default")){
+                    image_profile.setImageResource(R.mipmap.ic_launcher);
+                } else if(im.equals("1")) {
+                    image_profile.setImageResource(R.drawable.av1);
+
+                }else if(im.equals("2")) {
+                    image_profile.setImageResource(R.drawable.av2);
+
+                }else if(im.equals("3")) {
+                    image_profile.setImageResource(R.drawable.av3);
+
+                }else if(im.equals("4")) {
+                    image_profile.setImageResource(R.drawable.av4);
+
+                }else if(im.equals("5")) {
+                    image_profile.setImageResource(R.drawable.av5);
+
+                }else if(im.equals("6")) {
+                    image_profile.setImageResource(R.drawable.av6);
+
+                }
 
 
             }
@@ -165,22 +189,5 @@ public class MainActivity3 extends AppCompatActivity {
         manager.beginTransaction().replace(R.id.frame1, new ConsultantFragment()).commit();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.logout, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.logout:
-                FirebaseAuth.getInstance().signOut();
-                Intent myIntent2 = new Intent(MainActivity3.this, MainActivity2.class);
-                MainActivity3.this.startActivity(myIntent2);
-                finish();
-                return true;
-        }
-        return false;
-    }
 }

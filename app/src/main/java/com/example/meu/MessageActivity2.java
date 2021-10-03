@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.meu.adapters.MessageAdapter;
 import com.example.meu.models.Chat;
+import com.example.meu.models.User;
 import com.example.meu.models.mConsultant;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +36,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MessageActivity extends AppCompatActivity {
+public class MessageActivity2 extends AppCompatActivity {
 
     CircleImageView profile_image;
     TextView username;
@@ -57,7 +58,7 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_message2);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,7 +70,7 @@ public class MessageActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+/*
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -77,6 +78,8 @@ public class MessageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
+
+ */
         username = findViewById(R.id.username);
         btn_send = findViewById(R.id.btn_send1);
         text_send = findViewById(R.id.text_send);
@@ -85,7 +88,7 @@ public class MessageActivity extends AppCompatActivity {
         intent = getIntent();
         userid = intent.getStringExtra("userId");
         mUser = FirebaseAuth.getInstance().getCurrentUser();
-        mRef = FirebaseDatabase.getInstance().getReference("Consultant").child(userid);
+        mRef = FirebaseDatabase.getInstance().getReference("User").child(userid);
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,29 +100,45 @@ public class MessageActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MessageActivity2.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
                 text_send.setText("");
             }
         });
 
+
+
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                mConsultant con = snapshot.getValue(mConsultant.class);
+                User con = snapshot.getValue(User.class);
                 username.setText(con.getName());
-                String m =con.getImageUrl();
-                if(m.equals("default") || m.equals("noImg"))
+
+                if(con.getImageURL().equals("default"))
                 {
                     profile_image.setImageResource(R.mipmap.ic_launcher);
-                    //Toast.makeText(MessageActivity.this, "Alhamdulillah", Toast.LENGTH_SHORT).show();
                 }
-                else
-                {
-                    Glide.with(MessageActivity.this).load(con.getImageUrl()).into(profile_image);
+                else if(con.getImageURL().equals("1")) {
+                    profile_image.setImageResource(R.drawable.av1);
+
+                }else if(con.getImageURL().equals("2")) {
+                    profile_image.setImageResource(R.drawable.av2);
+
+                }else if(con.getImageURL().equals("3")) {
+                    profile_image.setImageResource(R.drawable.av3);
+
+                }else if(con.getImageURL().equals("4")) {
+                    profile_image.setImageResource(R.drawable.av4);
+
+                }else if(con.getImageURL().equals("5")) {
+                    profile_image.setImageResource(R.drawable.av5);
+
+                }else if(con.getImageURL().equals("6")) {
+                    profile_image .setImageResource(R.drawable.av6);
+
                 }
 
-                readMesagges(mUser.getUid(), userid, con.getImageUrl());
+                //readMesagges(mUser.getUid(), userid, con.getImageURL());
 
             }
 
@@ -208,7 +227,7 @@ public class MessageActivity extends AppCompatActivity {
                         mchat.add(chat);
                     }
 
-                    messageAdapter = new MessageAdapter(MessageActivity.this, mchat, imageurl);
+                    messageAdapter = new MessageAdapter(MessageActivity2.this, mchat, imageurl);
                     recyclerView.setAdapter(messageAdapter);
                 }
             }

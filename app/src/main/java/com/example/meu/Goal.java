@@ -9,11 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 public class Goal extends Fragment implements View.OnClickListener {
 
-    Button b1,b2;
+    ImageView b1;
 
 
     @Override
@@ -30,9 +31,7 @@ public class Goal extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_goal, container, false);
 
         b1 = view.findViewById(R.id.button);
-        b2 = view.findViewById(R.id.button1);
         b1.setOnClickListener(this);
-        b2.setOnClickListener(this);
 
         return view;
 
@@ -46,10 +45,7 @@ public class Goal extends Fragment implements View.OnClickListener {
                 Goal.this.startActivity(myIntent);
                 break;
 
-            case R.id.button1:
-                Intent myIntent2 = new Intent(getActivity(), ScheduleOrGoal.class);
-                Goal.this.startActivity(myIntent2);
-                break;
+
 
         }
     }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".MainActivity3">
+    android:layout_height="match_parent"
+    android:background="#66CBC9CD"
+    tools:context=".MessageActivity2">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +22,6 @@
             android:background="@color/teal_700"
             android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/Widget.AppCompat.PopupMenu">
-
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
@@ -41,25 +41,39 @@
         </androidx.appcompat.widget.Toolbar>
 
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:itemIconTint="@color/white"
-            app:itemTextColor="@color/white"
-            android:background="@color/teal_700"
-            app:menu="@menu/nv_menu2"
-            />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-
-    <FrameLayout
-        android:id="@+id/frame1"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="621dp"/>
+        android:layout_height="match_parent"
+        android:id="@+id/recycle_view"
+        android:layout_below="@id/bar_layout"
+        android:layout_above="@+id/bottom"/>
 
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fff">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_send"
+            android:hint="Text a message.."
+            android:layout_toLeftOf="@id/btn_send1"
+            android:layout_centerVertical="true"/>
 
-</LinearLayout>
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btn_send1"
+            android:src="@drawable/ic_baseline_send"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>

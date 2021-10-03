@@ -18,10 +18,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ConsultantReqOrLogin extends AppCompatActivity {
 
-    Button b1,b2,bl;
-    TextView tw,ps;
+    Button b1, b2, bl;
+    TextView tw, ps;
     View l;
-    int vis=0;
+    int vis = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,25 +64,28 @@ public class ConsultantReqOrLogin extends AppCompatActivity {
             public void onClick(View v) {
                 String pass = ps.getText().toString();
                 String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(pass);
-                if(sha256hex.equals("fd86714886e982d78522af58038a1237a4bf7b77533465c8211c462781b304f3"))
-                {
+                if (sha256hex.equals("fd86714886e982d78522af58038a1237a4bf7b77533465c8211c462781b304f3")) {
                     Intent myIntent = new Intent(ConsultantReqOrLogin.this, AddCons.class);
                     ConsultantReqOrLogin.this.startActivity(myIntent);
-                }
-                else
+                    ps.setText("");
+                } else
                     Toast.makeText(ConsultantReqOrLogin.this, "Wrong pass", Toast.LENGTH_SHORT).show();
             }
         });
 
 
     }
+
     @Override
     public void onBackPressed() {
         if (vis == 1) {
             hideLay();
 
-        } else
+
+        } else {
             super.onBackPressed();
+            ps.setText("");
+        }
 
     }
 
@@ -91,21 +95,20 @@ public class ConsultantReqOrLogin extends AppCompatActivity {
         b2.setVisibility(View.INVISIBLE);
         tw.setVisibility(View.INVISIBLE);
         l.setVisibility(View.VISIBLE);
-        vis =1;
+        vis = 1;
 
     }
+
     private void hideLay() {
         b1.setVisibility(View.VISIBLE);
         b2.setVisibility(View.VISIBLE);
         tw.setVisibility(View.VISIBLE);
         l.setVisibility(View.INVISIBLE);
-        vis=0;
+        vis = 0;
     }
 
 
-
-    public void alert()
-    {
+    public void alert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Wanna be a Consultant!");
         builder.setMessage("You will need to submit your CV on your consulting experience by mail to us.");

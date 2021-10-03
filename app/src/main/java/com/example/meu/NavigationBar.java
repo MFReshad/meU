@@ -52,6 +52,7 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
         FrameLayout fm = findViewById(R.id.frame);
 
         Animation fade= AnimationUtils.loadAnimation(this,R.anim.fade_out);
+
         gif.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -63,6 +64,8 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
                 replace(new AIchat());
             }
         },5000);
+
+
 
         nav.setNavigationItemSelectedListener(this);
 

@@ -16,27 +16,78 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeU"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".MessageActivity"></activity>
-        <activity android:name=".MainActivity3" />
-        <activity android:name=".ConsultantChatView" />
-        <activity android:name=".AddCons" />
-        <activity android:name=".models.Consultant" />
-        <activity android:name=".ConsultantReqOrLogin" />
-        <activity android:name=".ChatWithCons" />
-        <activity android:name=".ConsConfirm" />
-        <activity android:name=".LoginConsultant" />
-        <activity android:name=".LoadData" />
-        <activity android:name=".LinkID" />
-        <activity android:name=".AboutUs" />
-        <activity android:name=".ProfileSetting" />
-        <activity android:name=".ScheduleOrGoal" />
-        <activity android:name=".ToDoList" />
-        <activity android:name=".ChatWithAI" />
-        <activity android:name=".MainActivity2" />
-        <activity android:name=".NavigationBar" />
-        <activity android:name=".LogIn" />
+        <activity android:name=".MessageActivity2"></activity>
+        <activity android:name=".PickImageConsultant" />
+        <activity android:name=".VideoPlayer" />
+        <activity
+            android:name=".Exercise"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Meditation"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".PickImage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UpdateProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity3"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConsultantChatView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddCons"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConsultantReqOrLogin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChatWithCons"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConsConfirm"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginConsultant"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoadData"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LinkID"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AboutUs"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileSetting"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScheduleOrGoal"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ToDoList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChatWithAI"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavigationBar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LogIn"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

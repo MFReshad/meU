@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfileSetting extends AppCompatActivity {
 
-    Button link,load,chnPass;
+    Button link,load,chnImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class ProfileSetting extends AppCompatActivity {
 
         link = findViewById(R.id.linkbutton);
         load = findViewById(R.id.loadbutton);
-        chnPass = findViewById(R.id.changepassbtn);
+        chnImg = findViewById(R.id.changeImg);
 
         link.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,12 +38,24 @@ public class ProfileSetting extends AppCompatActivity {
             }
         });
 
-        chnPass.setOnClickListener(new View.OnClickListener() {
+        chnImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent myIntent = new Intent(ProfileSetting.this, UpdateProfile.class);
+                ProfileSetting.this.startActivity(myIntent);
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+
+        Intent intent = new Intent(ProfileSetting.this, NavigationBar.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        ProfileSetting.this.startActivity(intent);
+        finish();
 
     }
 }

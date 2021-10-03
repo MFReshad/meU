@@ -95,10 +95,11 @@ public class AddCons extends AppCompatActivity {
                     Consultant cons = new Consultant(uname,email,uid,gender);
 
                     mRootRef.child(uid).setValue(cons);
+                    mRootRef.child(uid).child("imageUrl").setValue("noImg");
 
                     Toast.makeText(AddCons.this, "Consultant added", Toast.LENGTH_SHORT).show();
-                    Intent myIntent1 = new Intent(AddCons.this, ConsultantReqOrLogin.class);
-                    startActivity(myIntent1);
+                    AddCons.super.onBackPressed();
+                    finish();
                 }
                 else
                     Toast.makeText(AddCons.this, "failed", Toast.LENGTH_SHORT).show();
