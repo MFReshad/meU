@@ -188,10 +188,12 @@ public class LogIn extends AppCompatActivity {
         String mail = "";
         String uid = mAuth.getCurrentUser().getUid();
 
-        mRootRef.child(uid).child("name").setValue(uname);
-        mRootRef.child(uid).child("id").setValue(uid);
-        mRootRef.child(uid).child("mail").setValue("");
-        mRootRef.child(uid).child("imageURL").setValue("noImg");
+        String id = mAuth.getCurrentUser().getUid();
+        DatabaseReference userRef = mRootRef.child(id);
+        userRef.child("name").setValue(uname);
+        userRef.child("id").setValue(uid);
+        userRef.child("mail").setValue("");
+        userRef.child("imageURL").setValue("noImg");
 
     }
 }

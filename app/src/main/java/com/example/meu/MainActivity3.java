@@ -49,7 +49,6 @@ public class MainActivity3 extends AppCompatActivity {
     CircleImageView image_profile;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +58,6 @@ public class MainActivity3 extends AppCompatActivity {
         bn = findViewById(R.id.nv);
         username = findViewById(R.id.username);
         image_profile = findViewById(R.id.profile_image);
-
 
 
         FrameLayout fm = findViewById(R.id.frame1);
@@ -79,24 +77,24 @@ public class MainActivity3 extends AppCompatActivity {
                 User user = snapshot.getValue(User.class);
                 username.setText(user.getName());
                 String im = user.getImageURL();
-                if (im.equals("default")){
+                if (im.equals("default")) {
                     image_profile.setImageResource(R.mipmap.ic_launcher);
-                } else if(im.equals("1")) {
+                } else if (im.equals("1")) {
                     image_profile.setImageResource(R.drawable.av1);
 
-                }else if(im.equals("2")) {
+                } else if (im.equals("2")) {
                     image_profile.setImageResource(R.drawable.av2);
 
-                }else if(im.equals("3")) {
+                } else if (im.equals("3")) {
                     image_profile.setImageResource(R.drawable.av3);
 
-                }else if(im.equals("4")) {
+                } else if (im.equals("4")) {
                     image_profile.setImageResource(R.drawable.av4);
 
-                }else if(im.equals("5")) {
+                } else if (im.equals("5")) {
                     image_profile.setImageResource(R.drawable.av5);
 
-                }else if(im.equals("6")) {
+                } else if (im.equals("6")) {
                     image_profile.setImageResource(R.drawable.av6);
 
                 }
@@ -189,5 +187,18 @@ public class MainActivity3 extends AppCompatActivity {
         manager.beginTransaction().replace(R.id.frame1, new ConsultantFragment()).commit();
     }
 
+/*
+    @Override
+    public void onBackPressed() {
 
+
+        Intent intent = new Intent(MainActivity3.this, NavigationBar.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        MainActivity3.this.startActivity(intent);
+        finish();
+
+
+    }
+
+ */
 }

@@ -99,9 +99,16 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if(snapshot.child("User").child(uId).exists())
                 {
-                    Intent myIntent = new Intent(MainActivity.this, NavigationBar.class);
-                    MainActivity.this.startActivity(myIntent);
-                    finish();
+                    try {
+                        Intent myIntent = new Intent(MainActivity.this, NavigationBar.class);
+                        MainActivity.this.startActivity(myIntent);
+                        finish();
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                        //Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {

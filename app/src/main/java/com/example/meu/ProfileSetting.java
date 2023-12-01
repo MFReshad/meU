@@ -47,7 +47,7 @@ public class ProfileSetting extends AppCompatActivity {
         });
 
     }
-
+/*
     @Override
     public void onBackPressed() {
 
@@ -58,4 +58,6 @@ public class ProfileSetting extends AppCompatActivity {
         finish();
 
     }
+
+ */
 }

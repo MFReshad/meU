@@ -59,7 +59,7 @@ public class NavigationBar extends AppCompatActivity implements NavigationView.O
                 gif.setAnimation(fade);
                 gif.setVisibility(View.INVISIBLE);
                 fm.setBackgroundColor(Color.WHITE);
-                //im.setBackgroundResource(R.drawable.pic1);
+                im.setBackgroundResource(R.drawable.pic1);
                 hide();
                 replace(new AIchat());
             }

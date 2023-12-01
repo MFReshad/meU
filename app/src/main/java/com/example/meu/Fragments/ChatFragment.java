@@ -75,6 +75,8 @@ public class ChatFragment extends Fragment {
                 chatList();
             }
 
+
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -90,45 +92,36 @@ public class ChatFragment extends Fragment {
 
     private void chatList() {
         mUsers = new ArrayList<>();
-        reference = FirebaseDatabase.getInstance().getReference("Chat");
+        reference = FirebaseDatabase.getInstance().getReference("Consultant");
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUsers.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren())
-                {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     mConsultant user = snapshot.getValue(mConsultant.class);
-                    for (String id : usersList)
-                    {
-                        if(user.getId().equals(id))
-                        {
-                            if(mUsers.size() != 0)
-                            {
-                                for( mConsultant user1 : mUsers)
-                                {
-                                    if(!user.getId().equals(user1.getId()))
-                                    {
-                                        mUsers.add(user);
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                mUsers.add(user);
-                            }
-                        }
+                    if (user != null && usersList.contains(user.getId())) {
+                        mUsers.add(user);
                     }
                 }
+
+                // Set up the adapter and attach it to the RecyclerView
                 userAdapter = new ConsultantAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(userAdapter);
+
+                // Notify the adapter that the data set has changed
+                userAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                // Handle onCancelled
             }
         });
     }
+
+
 
 
 

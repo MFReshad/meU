@@ -60,17 +60,15 @@ public class UserFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 mConst.clear();
-                for (DataSnapshot dsnapshot : snapshot.getChildren() )
-                {
+                for (DataSnapshot dsnapshot : snapshot.getChildren()) {
                     User mCons = dsnapshot.getValue(User.class);
 
-                    assert mCons != null;
-                    assert mfUser != null;
-                    if(!mCons.getId().equals(mfUser.getUid()))
-                    {
+                    if (mCons != null && mCons.getId() != null && !mCons.getId().equals(mfUser.getUid())) {
                         mConst.add(mCons);
                     }
                 }
+
+
 
                 consultantAdapter = new UserAdapter(getContext(),mConst);
                 recyclerView.setAdapter(consultantAdapter);

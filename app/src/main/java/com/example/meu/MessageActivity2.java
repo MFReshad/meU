@@ -114,7 +114,7 @@ public class MessageActivity2 extends AppCompatActivity {
                 User con = snapshot.getValue(User.class);
                 username.setText(con.getName());
 
-                if(con.getImageURL().equals("default"))
+                if(con.getImageURL().equals("default") || con.getImageURL().equals("noImg"))
                 {
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 }

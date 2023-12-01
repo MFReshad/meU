@@ -8,16 +8,18 @@ public class Consultant {
     private String mail;
     private String id;
     private String gender;
+    private String imageUrl;
 
     public Consultant() {
 
     }
 
-    public Consultant(String name, String mail, String id, String gender) {
+    public Consultant(String name, String mail, String id, String gender , String imageUrl) {
         this.name = name;
         this.mail = mail;
         this.id = id;
         this.gender = gender;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -48,8 +50,13 @@ public class Consultant {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(String gender) {this.gender = gender;}
+    public String getimg() {
+        return imageUrl;
+    }
+
+    public void setimg(String imgUrl) {
+        this.imageUrl = imgUrl;
     }
 
 

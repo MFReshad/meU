@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.meu">
+    xmlns:tools="http://schemas.android.com/tools">
+
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,6 +9,7 @@
 
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:appComponentFactory="whateverString"
         android:icon="@mipmap/ic_launcher"
         android:label="meU"
@@ -18,7 +19,8 @@
         tools:replace="android:appComponentFactory">
         <activity android:name=".MessageActivity2"></activity>
         <activity android:name=".PickImageConsultant" />
-        <activity android:name=".VideoPlayer" />
+        <activity android:name=".VideoPlayer"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".Exercise"
             android:screenOrientation="portrait" />
@@ -88,7 +90,8 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing">
+            android:windowSoftInputMode="adjustNothing"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

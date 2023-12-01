@@ -51,33 +51,40 @@ public class AddCons extends AppCompatActivity {
         mCurrentUser = mAuth.getCurrentUser();
         mRootRef = FirebaseDatabase.getInstance().getReference("Consultant");
 
+
         a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                b.setChecked(false);
-                gender = "male";
+                if (isChecked) {
+                    b.setChecked(false);
+                    gender = "male";
+                }
             }
         });
+
         b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                a.setChecked(false);
-                gender = "female";
+                if (isChecked) {
+                    a.setChecked(false);
+                    gender = "female";
+                }
             }
         });
 
         bn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userLogin();
                 String txt_mail = mail.getText().toString();
                 String txt_pass = pass.getText().toString();
-                if(mCurrentUser==null)
-                {
-                    register(txt_mail,txt_pass);
+                if (mCurrentUser == null) {
+                    userLogin();
+                    register(txt_mail, txt_pass);
                 }
             }
         });
+
+
 
 
     }
@@ -91,13 +98,13 @@ public class AddCons extends AppCompatActivity {
 
                     String uname = name.getText().toString();
                     String uid = mAuth.getCurrentUser().getUid();
-                    String gen = gender;
-                    Consultant cons = new Consultant(uname,email,uid,gender);
+                    Consultant cons = new Consultant(uname,email,uid,gender,"noImg");
 
                     mRootRef.child(uid).setValue(cons);
                     mRootRef.child(uid).child("imageUrl").setValue("noImg");
 
                     Toast.makeText(AddCons.this, "Consultant added", Toast.LENGTH_SHORT).show();
+                    mAuth.signOut();
                     AddCons.super.onBackPressed();
                     finish();
                 }
